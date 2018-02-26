@@ -1,0 +1,32 @@
+<p>Advance Table</p>
+<?php $name = $block->getMovieName()?>
+<table border="1">
+    <tr>
+        <td>Name</td>
+        <td>Director</td>
+        <td>Actor</td>
+    </tr>
+
+<?php foreach ($name as $value){?>
+   <tr>
+       <td><?= $value->getName()?></td>
+       <td><?= $this->getDirector($value->getDirectorId())->getName()?></td>
+       <td><?php
+           $thu = $this->getDirector($value->getDirectorId())->getName();
+           $c = $value->getMovieId();
+           $a = $this->_getActorId($c);
+          ?>
+           <table>
+           <?php foreach ($a as $value){
+               $h = $value->getActorId();
+               $b = $this->_getActorName($value->getActorId()) ;
+               ?>
+              <tr>
+                  <td><?= $b->getName()?></td>
+              </tr>
+            <?php } ?>
+        </td>
+   </tr>
+           </table>
+<?php } ?>
+</table>

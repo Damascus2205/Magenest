@@ -1,0 +1,124 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var  $block \Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer */
+$_item = $block->getItem();
+?>
+<tr id="order-item-row-<?= /* @escapeNotVerified */ $_item->getId() ?>">
+    <td class="col name" data-th="<?= $block->escapeHtml(__('Product Name')) ?>">
+        <strong class="product name product-item-name"><?= $block->escapeHtml($_item->getName()) ?></strong>
+        <?php if ($_options = $block->getItemOptions()): ?>
+            <dl class="item-options">
+                <?php foreach ($_options as $_option) : ?>
+                    <dt><?= $block->escapeHtml($_option['label']) ?></dt>
+                    <?php if (!$block->getPrintStatus()): ?>
+                        <?php $_formatedOptionValue = $block->getFormatedOptionValue($_option) ?>
+                        <dd>
+                            <?php if (isset($_formatedOptionValue['full_view'])): ?>
+                                <?= /* @escapeNotVerified */ $_formatedOptionValue['full_view'] ?>
+                            <?php else: ?>
+                                <?= /* @escapeNotVerified */ $_formatedOptionValue['value'] ?>
+                            <?php endif; ?>
+                        </dd>
+                    <?php else: ?>
+                        <dd>
+                            <?= nl2br($block->escapeHtml((isset($_option['print_value']) ? $_option['print_value'] : $_option['value']))) ?>
+                        </dd>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+        <?php endif; ?>
+        <?php $addtInfoBlock = $block->getProductAdditionalInformationBlock(); ?>
+        <?php if ($addtInfoBlock) :?>
+            <?= $addtInfoBlock->setItem($_item)->toHtml() ?>
+        <?php endif; ?>
+        <?= $block->escapeHtml($_item->getDescription()) ?>
+    </td>
+    <td class="col sku" data-th="<?= $block->escapeHtml(__('SKU')) ?>"><?= /* @escapeNotVerified */ $block->prepareSku($block->getSku()) ?></td>
+    <td class="col price" data-th="<?= $block->escapeHtml(__('Price')) ?>">
+        <?= $block->getItemPriceHtml() ?>
+    </td>
+    <td class="col qty" data-th="<?= $block->escapeHtml(__('Qty')) ?>">
+        <ul class="items-qty">
+            <?php if ($block->getItem()->getQtyOrdered() > 0): ?>
+                <li class="item">
+                    <span class="title"><?= /* @escapeNotVerified */ __('Ordered') ?></span>
+                    <span class="content"><?= /* @escapeNotVerified */ $block->getItem()->getQtyOrdered()*1 ?></span>
+                </li>
+            <?php endif; ?>
+            <?php if ($block->getItem()->getQtyShipped() > 0): ?>
+                <li class="item">
+                    <span class="title"><?= /* @escapeNotVerified */ __('Shipped') ?></span>
+                    <span class="content"><?= /* @escapeNotVerified */ $block->getItem()->getQtyShipped()*1 ?></span>
+                </li>
+            <?php endif; ?>
+            <?php if ($block->getItem()->getQtyCanceled() > 0): ?>
+                <li class="item">
+                    <span class="title"><?= /* @escapeNotVerified */ __('Canceled') ?></span>
+                    <span class="content"><?= /* @escapeNotVerified */ $block->getItem()->getQtyCanceled()*1 ?></span>
+                </li>
+            <?php endif; ?>
+            <?php if ($block->getItem()->getQtyRefunded() > 0): ?>
+                <li class="item">
+                    <span class="title"><?= /* @escapeNotVerified */ __('Refunded') ?></span>
+                    <span class="content"><?= /* @escapeNotVerified */ $block->getItem()->getQtyRefunded()*1 ?></span>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </td>
+    <td class="col subtotal" data-th="<?= $block->escapeHtml(__('Subtotal')) ?>">
+        <?= $block->getItemRowTotalHtml() ?>
+    </td>
+    <?php if($this->checkService() != 1){ ?>
+    <td>
+        <button id="click-me<?php echo $_item->getId() ?>" value="<?php echo $_item->getId()?>">Click me</button>
+    </td>
+    <div id="popup-mpdal<?php echo $_item->getId() ?>" style="display:none;"  >
+        <form action="<?php echo $this->getUrl('product_service/index/index');?>" method = "post">
+            <select name="service_type">
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+            </select>
+            <input type="hidden" name="stored_id" value="<?= $block->escapeHtml($_item['store_id']); ?>"/>
+            <input type="hidden" name="product_id" value="<?= $block->escapeHtml($_item['product_id']); ?>"/>
+            <input type="hidden" name="order_id" value="<?= $block->escapeHtml($_item['order_id']); ?>"/>
+            <input type="hidden" name="item_id" value="<?= $block->escapeHtml($_item['item_id']); ?>"/>
+            <div class="actions-toolbar" style="padding-top: 10px;">
+                <div class="primary">
+                    <button type="submit" class="action submit primary"><span><?php echo __('Submit') ?></span></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        require(
+            ['jquery', 'Magento_Ui/js/modal/modal'],
+            function($, modal) {
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: 'Product Service',
+                    buttons: [{
+                        text: $.mage.__('close'),
+                        class: '',
+                        click: function () {
+                            this.closeModal();
+                        }
+                    }]
+                };
+                var popup = modal(options, $('#popup-mpdal<?php echo $_item->getId() ?>'));
+                $("#click-me<?php echo $_item->getId()?>").on('click',function(){
+                    $("#popup-mpdal<?php echo $_item->getId() ?>").modal("openModal");
+                });
+            }
+        );
+    </script>
+        <?php } ?>
+</tr>
