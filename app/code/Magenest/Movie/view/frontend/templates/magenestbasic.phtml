@@ -1,0 +1,67 @@
+<?php $b = $block->getItem('magenestMovie'); ?>
+<h2>Movie table</h2>
+<table border="1">
+    <tr>
+        <td>Movie id</td>
+        <td>Name</td>
+        <td>Description</td>
+        <td>Rating</td>
+        <td>Director_id</td>
+    </tr>
+    <?php foreach ($b as $item) {?>
+        <tr>
+            <td><?= $item->getMovieId()?></td>
+            <td><?= $item->getName()?></td>
+            <td><?= $item->getDescription()?></td>
+            <td><?= $item->getRating()?></td>
+            <td><?= $item->getDirectorId()?></td>
+        </tr>
+    <?php    }?>
+</table>
+
+<?php $a = $block->getItem('magenestActor'); ?>
+<h2>Actor table</h2>
+<table border="1">
+    <tr>
+        <td>Actor id</td>
+        <td>Name</td>
+    </tr>
+    <?php foreach ($a as $item) {?>
+        <tr>
+            <td><?= $item->getActorId()?></td>
+            <td><?= $item->getName()?></td>
+        </tr>
+    <?php    }?>
+</table>
+
+<?php $c = $block->getItem('magenestDirector'); ?>
+<h2>Director table</h2>
+<table border="1">
+    <tr>
+        <td>Director id</td>
+        <td>Name</td>
+    </tr>
+    <?php foreach ($c as $item) {?>
+        <tr>
+            <td><?= $item->getDirectorId()?></td>
+            <td><?= $item->getName()?></td>
+        </tr>
+    <?php    }?>
+</table>
+
+<?php $d = $block->getItem('movieActor'); ?>
+<h2>Movie Actor table</h2>
+<table border="1">
+    <tr>
+        <td>Movie id</td>
+        <td>Actor id</td>
+    </tr>
+    <?php foreach ($d as $item) {?>
+        <tr>
+            <td><?= $item->getMovieId()?></td>
+            <td><?= $item->getActorId()?></td>
+        </tr>
+    <?php $g = 1;  }?>
+</table>
+
+
