@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Das_evil</title>
+    </head>
+    <body>
+        <remove name="wishlist_sidebar"/>
+        <referenceContainer name="content">
+            <!--<block class="Test\Das\Block\Hell" name="hellblock" template="Test_Das::hell.phtml"/>-->
+            <!--<block class="Test\Das\Block\Mas" name="masblock" template="Test_Das::mas.phtml"/>-->
+            <block class="Test\Das\Block\Adminhtml\Form" name="form" template="Test_Das::form.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

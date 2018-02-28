@@ -1,0 +1,53 @@
+<form id="form" action="<?php echo $this->getInfor()?>" method="post" >
+    <a href="<?php echo $this->getDt('lastname')?>">aas</a>
+<!--    <div>-->
+<!--        <p>ID: --><?php //echo $this->getDt('subscription_id')?><!--</p>-->
+<!--    </div>-->
+    <div>
+        <input type="hidden" name="id" value="<?php echo $this->getDt('subscription_id')?>"/>
+    </div>
+    <div><p>First Name</p>
+        <input type="text" name="firstname" value="<?php echo $this->getDt('firstname')?>"/>
+    </div>
+    <div><p> Last Name</p>
+        <input type="text" name="lastname" value="<?php echo $this->getDt('lastname')?>"/>
+    </div>
+    <div><p> Email Address</p>
+        <input type="text" name="email" value="<?php echo $this->getDt('email')?>"/>
+    </div>
+    <div><p>Status</p>
+        <select name="status" value-scope="" >
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="decline">Decline</option>
+        </select>
+    </div>
+    <div><p>Action</p>
+        <button type="submit">
+            Submit
+        </button>
+    </div>
+<!--        <tr>-->
+<!--            <th>ID</th>-->
+<!--            <th>First Name</th>-->
+<!--            <th>Last Name</th>-->
+<!--            <th> Email Address</th>-->
+<!--            <th> Status</th>-->
+<!--            <th> Action</th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <th>--><?php //echo $this->getDt('subscription_id')?><!--</th>-->
+<!--            <th> <input type="text" name="firstname" value="--><?php //echo $this->getDt('firstname')?><!--"/></th>-->
+<!--            <th> <input type="text" name="lastname" value="--><?php //echo $this->getDt('lastname')?><!--"/></th>-->
+<!--            <th> <input type="text" name="email" value="--><?php //echo $this->getDt('email')?><!--"/></th>-->
+<!--            <th>  <select name="status" value-scope="" >-->
+<!--                    <option value="pending">Pending</option>-->
+<!--                    <option value="approved">Approved</option>-->
+<!--                    <option value="decline">Decline</option>-->
+<!--                </select></th>-->
+<!--            <th>  <button type="submit">-->
+<!--                    Submit-->
+<!--                </button></th>-->
+<!--        </tr>-->
+<!--    </table>-->
+</form>

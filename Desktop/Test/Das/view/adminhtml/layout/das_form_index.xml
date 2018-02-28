@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <!--<block class="Test\Das\Block\Adminhtml\Sub1" name="adminhtml.block.das.subscription.container">-->
+                <!--<block class="Test\Das\Block\Adminhtml\Sub\Grid" name="adminhtml.block.helloworld.subscription.grid" as="grid"/>-->
+            <!--</block>-->
+            <block class="Test\Das\Block\Adminhtml\Form" name="hellblock" template="Test_Das::form.phtml"/>
+
+        </referenceContainer>
+    </body>
+</page>

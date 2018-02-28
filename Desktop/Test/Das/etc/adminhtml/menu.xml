@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Test_Das::das"
+           title="Das"
+           module="Test_Das"
+           sortOrder="50"
+           parent="Magento_Backend::content"
+           resource="Test_Das::das"
+        />
+        <add id="Test_Das::index"
+             title="Mas"
+             module="Test_Das"
+             sortOrder="60"
+             parent="Test_Das::das"
+             action="das/form"
+             resource="Test_Das::index"
+        />
+        <add id="Test_Das::sub"
+             title="Sub"
+             module="Test_Das"
+             sortOrder="70"
+             parent="Test_Das::das"
+             action="das/subscription/"
+             resource="Test_Das::sub"
+             />
+    </menu>
+</config>
