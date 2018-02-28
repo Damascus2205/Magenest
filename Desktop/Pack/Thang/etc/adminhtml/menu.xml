@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="Pack_Thang::thang"
+                title="Thang"
+                module="Pack_Thang"
+                sortOrder="50"
+                parent="Magento_Backend::marketing"
+                resource="Pack_Thang::thang"
+        />
+        <add
+                id="Pack_Thang::index"
+                title="Thang Index"
+                module="Pack_Thang"
+                sortOrder="55"
+                parent="Pack_Thang::thang"
+                action="thang/index/"
+                resource="Pack_Thang::index"
+        />
+        <add
+                id="Pack_Thang::subscription"
+                title="Subscriptions"
+                module="Pack_Thang"
+                sortOrder="70"
+                parent="Pack_Thang::thang"
+                action="thang/subscription/"
+                resource="Pack_Thang::subscription"
+        />
+    </menu>
+</config>

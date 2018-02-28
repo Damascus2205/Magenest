@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="Pack_Thng::thng"
+            title="Thangvp"
+            module="Pack_Thng"
+            sortOrder="50"
+            parent="Magento_Backend::marketing"
+            resource="Pack_Thng::thng"
+        />
+        <add
+            id="Pack_Thng::index"
+            title="Thng Index"
+            module="Pack_Thng"
+            sortOrder="60"
+            parent="Pack_Thng::thng"
+            action="thng/index/"
+            resource="Pack_Thng::index"
+        />
+        <!--<add id="Pack_Thng::subscription"-->
+             <!--title="Subscription"-->
+             <!--module="Pack_Thng"-->
+             <!--sortOrder="70"-->
+             <!--parent="Pack_Thng::thng"-->
+             <!--action="thng/subscription/"-->
+             <!--resource="Pack_Thng::subscription"-->
+        <!--/>-->
+        <add
+                id="Pack_Thng::subscription"
+                title="Subscriptions"
+                module="Pack_Thng"
+                sortOrder="70"
+                parent="Pack_Thng::thng"
+                action="thng/subscription/index"
+                resource="Pack_Thng::subscription"
+        />
+        <add id="Pack_Thng::component"
+             title="Component"
+             module="Pack_Thng"
+             sortOrder="80"
+             parent="Pack_Thng::thng"
+             action="thng/component/"
+             resource="Pack_Thng::component"
+        />
+        <!--<add-->
+                <!--id="Pack_Thng::ndex"-->
+                <!--title="Thng ndex"-->
+                <!--module="Pack_Thng"-->
+                <!--sortOrder="55"-->
+                <!--parent="Pack_Thng::index"-->
+                <!--resource="Pack_Thng::ndex"-->
+        <!--/>-->
+    </menu>
+</config>
